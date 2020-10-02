@@ -13,8 +13,8 @@ const writeStatsJson = argv.indexOf('--stats') !== -1;
 const useEslintrc = !process.env.NSB_DISABLE_ESLINTRC;
 
 async function build(env) {
-    const isDev = !env || env === 'development';
-
+    const isDebug = env === 'debug';
+    const isDev = !env || env === 'development' || isDebug;
     const config = {
         target: 'node',
         // Un-comment this to debug compiled source in development
@@ -98,12 +98,17 @@ async function build(env) {
             },
         };
 
+        if (isDebug) {
+            config.devtool = 'cheap-source-map';
+        }
+
         config.plugins.push(
             new NodemonPlugin({
                 script: 'dist/index.js',
                 watch: ['dist'],
-                ignore: ['src', 'node_modules'],
+                ignore: ['src', 'node_modules', '*.js.map'],
                 verbose: true,
+                nodeArgs: isDebug ? ['--inspect=9229'] : [],
             }),
         );
 
