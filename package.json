@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
-    "debug": "webpack --env=debug",
-    "build": "node --inspect=9229 dist/index.js"
+    "start": "npm && webpack",
+    "debug": "npm && webpack --env=debug",
+    "build": "npm && webpack --env=production"
   },
   "author": "",
   "license": "ISC",
