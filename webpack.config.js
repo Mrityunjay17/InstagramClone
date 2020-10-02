@@ -108,7 +108,7 @@ async function build(env) {
                 watch: ['dist'],
                 ignore: ['src', 'node_modules', '*.js.map'],
                 verbose: true,
-                nodeArgs: isDebug ? ['--inspect=9229'] : [],
+                nodeArgs: isDebug ? process.argv.concat('--inspect=9229') : process.argv,
             }),
         );
 
