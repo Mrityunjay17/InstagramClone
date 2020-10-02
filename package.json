@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm && webpack",
-    "debug": "npm && webpack --env=debug",
-    "build": "npm && webpack --env=production",
+    "start": "npm install && webpack",
+    "debug": "npm install && webpack --env=debug",
+    "build": "npm install && webpack --env=production",
     "pre-commit-eslint-fix": "sh pre-commit.sh",
     "lint-staged": "lint-staged"
   },
