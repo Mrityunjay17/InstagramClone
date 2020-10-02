@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm && webpack",
     "debug": "npm && webpack --env=debug",
-    "build": "npm && webpack --env=production"
+    "build": "npm && webpack --env=production",
+    "pre-commit-eslint-fix": "sh pre-commit.sh",
+    "lint-staged": "lint-staged"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,8 @@
     "dotenv": "^8.2.0",
     "eslint-loader": "^4.0.2",
     "express": "^4.17.1",
+    "lint-staged": "^10.4.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.1.2"
   },
   "devDependencies": {
@@ -35,5 +39,9 @@
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2",
     "webpackbar": "^4.0.0"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "(src)/**/*.{js,ts}": "npm run pre-commit-eslint-fix"
   }
 }
